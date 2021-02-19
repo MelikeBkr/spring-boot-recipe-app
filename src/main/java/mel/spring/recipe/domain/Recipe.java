@@ -30,7 +30,6 @@ public class Recipe
     //cascade is defined. If we delete the recipe object the entitites
     // relate to recipe object will also be deleted.
     @OneToOne(cascade = CascadeType.ALL)
-
     private Notes notes;
 
     @Enumerated(value = EnumType.STRING)
@@ -120,6 +119,13 @@ public class Recipe
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
+    }
+
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Set<Ingredient> getIngredients() {
