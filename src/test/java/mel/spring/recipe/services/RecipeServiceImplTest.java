@@ -1,11 +1,12 @@
 package mel.spring.recipe.services;
 
+import mel.spring.recipe.converters.RecipeCommandToRecipe;
+import mel.spring.recipe.converters.RecipeToRecipeCommand;
 import mel.spring.recipe.domain.Recipe;
 import mel.spring.recipe.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
@@ -21,11 +22,17 @@ public class RecipeServiceImplTest
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception
     {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
     @Test
     public void getRecipeByIdTest() throws Exception {

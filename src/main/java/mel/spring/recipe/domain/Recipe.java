@@ -22,7 +22,6 @@ public class Recipe
     @Lob
     private String directions;
 
-    //private Difficulty difficulty;
     //Lob: Large object field
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
@@ -30,7 +29,7 @@ public class Recipe
     @Lob
     private Byte[] image;
 
-    //cascade is defined. If we delete the recipe object the entitites
+    //cascade is defined. If we delete the recipe object the entities
     // relate to recipe object will also be deleted.
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
