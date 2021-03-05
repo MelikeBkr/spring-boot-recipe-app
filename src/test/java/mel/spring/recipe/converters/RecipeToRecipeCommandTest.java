@@ -45,7 +45,7 @@ public class RecipeToRecipeCommandTest {
 
     @Test
     public void convert() throws Exception {
-        //given
+        //GIVEN
         Recipe recipe = new Recipe();
         recipe.setId(RECIPE_ID);
         recipe.setCookTime(COOK_TIME);
@@ -80,10 +80,10 @@ public class RecipeToRecipeCommandTest {
         recipe.getIngredients().add(ingredient);
         recipe.getIngredients().add(ingredient2);
 
-        //when
+        //WHEN
         RecipeCommand command = converter.convert(recipe);
 
-        //then
+        //THEN
         assertNotNull(command);
         assertEquals(RECIPE_ID, command.getId());
         assertEquals(COOK_TIME, command.getCookTime());

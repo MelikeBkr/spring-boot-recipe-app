@@ -49,7 +49,7 @@ public class RecipeServiceImplTest
         verify(recipeRepository, never()).findAll();
     }
     @Test
-    public void getRecipes() throws Exception
+    public void getRecipesTest() throws Exception
     {
         Recipe recipe = new Recipe();
         HashSet<Recipe> recipeSet = new HashSet<>();
@@ -58,5 +58,17 @@ public class RecipeServiceImplTest
         Set<Recipe> recipes = recipeService.getRecipes();
         assertEquals(1,recipes.size());
         verify(recipeRepository,times(1)).findAll();
+    }
+    @Test
+    public void testDeleteById() throws Exception {
+
+        //GIVEN
+        Long idToDelete = Long.valueOf(2L);
+
+        //WHEN
+        recipeService.deleteById(idToDelete);
+
+        //THEN
+        verify(recipeRepository, times(1)).deleteById(anyLong());
     }
 }

@@ -32,15 +32,15 @@ public class UnitOfMeasureCommandToUnitOfMeasureTest {
 
     @Test
     public void convert() throws Exception {
-        //given
+        //GIVEN
         UnitOfMeasureCommand command = new UnitOfMeasureCommand();
         command.setId(LONG_VALUE);
         command.setDescription(DESCRIPTION);
 
-        //when
+        //WHEN
         UnitOfMeasure uom = converter.convert(command);
 
-        //then
+        //THEN
         assertNotNull(uom);
         assertEquals(LONG_VALUE, uom.getId());
         assertEquals(DESCRIPTION, uom.getDescription());
