@@ -4,6 +4,7 @@ import lombok.Synchronized;
 import mel.spring.recipe.commands.RecipeCommand;
 import mel.spring.recipe.domain.Category;
 import mel.spring.recipe.domain.Recipe;
+import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand>{
         command.setServings(source.getServings());
         command.setSource(source.getSource());
         command.setUrl(source.getUrl());
+        command.setImage(source.getImage());
         command.setNotes(notesConverter.convert(source.getNotes()));
 
         if (source.getCategories() != null && source.getCategories().size() > 0){
