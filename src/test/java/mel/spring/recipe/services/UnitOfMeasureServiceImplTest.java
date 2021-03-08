@@ -31,7 +31,7 @@ public class UnitOfMeasureServiceImplTest {
 
     @Test
     public void listAllUoms() throws Exception {
-        //given
+        //GIVEN
         Set<UnitOfMeasure> unitOfMeasures = new HashSet<>();
         UnitOfMeasure uom1 = new UnitOfMeasure();
         uom1.setId(1L);
@@ -43,10 +43,10 @@ public class UnitOfMeasureServiceImplTest {
 
         when(unitOfMeasureRepository.findAll()).thenReturn(unitOfMeasures);
 
-        //when
+        //WHEN
         Set<UnitOfMeasureCommand> commands = service.listAllUoms();
 
-        //then
+        //THEN
         assertEquals(2, commands.size());
         verify(unitOfMeasureRepository, times(1)).findAll();
     }
