@@ -5,6 +5,7 @@ import mel.spring.recipe.commands.RecipeCommand;
 import mel.spring.recipe.converters.RecipeCommandToRecipe;
 import mel.spring.recipe.converters.RecipeToRecipeCommand;
 import mel.spring.recipe.domain.Recipe;
+import mel.spring.recipe.exceptions.NotFoundException;
 import mel.spring.recipe.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,12 +38,12 @@ public class RecipeServiceImpl implements RecipeService
     }
 
     @Override
-    public Recipe findById(Long l)
-    {
+    public Recipe findById(Long l) {
+
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found. For ID value: " + l.toString() );
         }
 
         return recipeOptional.get();
